@@ -16,7 +16,7 @@ from contextlib import asynccontextmanager
 
 
 LOGGER.info("Downloading folders from buckets")
-# download_all()
+download_all()
 
 fifo_queue = asyncio.Queue()
 

@@ -284,10 +284,21 @@ def get_answer(question, source, video_id, k=0, similarity_cutoff=0.1):
         f"Request received with question:{question}, source:{source}, video: {video_id}"
     )
     if not os.path.exists(f"./storage/{video_id}/{source}"):
-        LOGGER.error("Index not found.Please train first")
-        raise urllib.error.HTTPError(
-            url="", code=404, msg="Index Not Found", hdrs={}, fp=None
-        )
+        # fix in case the files did not get downloaded for image trainings
+        try:
+            download_file(
+                BUCKET_NAME,
+                f"storage/{video_id}/{source}",
+                f"storage/{video_id}/{source}",
+            )
+        except:
+            LOGGER.info("Index not found in S3 also")
+
+        if not os.path.exists(f"./storage/{video_id}/{source}"):
+            LOGGER.error("Index not found.Please train first")
+            raise urllib.error.HTTPError(
+                url="", code=404, msg="Index Not Found", hdrs={}, fp=None
+            )
     try:
         if source is None or source == "":
             tool = get_intent(question)

@@ -8,10 +8,14 @@ s3_client = session.client("s3")
 
 
 def upload_file(bucket_name, local_path, s3_path):
+    LOGGER.info(f"Uploading {local_path} to bucket {bucket_name} and s3 path {s3_path}")
     s3_client.upload_file(local_path, bucket_name, s3_path)
 
 
 def download_file(bucket_name, s3_path, local_path):
+    LOGGER.info(
+        f"Downloading from {s3_path}, bucket {bucket_name} to local path {local_path}"
+    )
     s3_client.download_file(bucket_name, s3_path, local_path)
 
 
