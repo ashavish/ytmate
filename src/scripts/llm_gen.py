@@ -42,7 +42,7 @@ from llama_index.query_engine import RetrieverQueryEngine
 from llama_index.postprocessor import SimilarityPostprocessor
 import urllib.error
 from src import LOGGER
-from src.scripts.utils import download_file, upload_file, upload_folder
+from src.scripts.utils import download_file, upload_file, upload_folder, download_folder
 from src.scripts.settings import BUCKET_NAME, LOCAL_DOWNLOAD_FOLDER
 import json
 from llama_index import Prompt
@@ -286,7 +286,7 @@ def get_answer(question, source, video_id, k=0, similarity_cutoff=0.1):
     if not os.path.exists(f"./storage/{video_id}/{source}"):
         # fix in case the files did not get downloaded for image trainings
         try:
-            download_file(
+            download_folder(
                 BUCKET_NAME,
                 f"storage/{video_id}/{source}",
                 f"storage/{video_id}/{source}",
