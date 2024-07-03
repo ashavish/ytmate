@@ -6,7 +6,6 @@ MODEL_NAME_QA = "gpt-3.5-turbo"
 MAX_TOKENS_QA = 1000
 MAX_TOKENS_QA = 4089
 
-# BUCKET_NAME = "testasha12"
 
 BUCKET_NAME = "ytmate-transcript-bucket"
 

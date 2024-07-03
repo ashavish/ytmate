@@ -7,20 +7,35 @@ Transcript
 """
 
 transcript_summary_template = """You create summaries of transcripts of videos.
-Given this transcript below, create a summary.
+Given this transcript, create a summary. The rules for creating summaries are given below.
 
-If its a cooking related video, try to create a summary like below with separate headings
- - "Ingredients " :
-- "Cooking steps" :
-Also mention if its an easy / medium or hard recipe.
+Rules:
 
-If its a learning video, create a summary to include a separate heading for "Key Learnings".
+1.If its a cooking tutorial / recipe video, your output should be a summary like below with separate headings
+ Ingredients : < Ingredients >,
+ Cooking steps : <cooking steps>,
+ Recipe difficulty : <do you think it is Easy/ medium/ hard>
 
-In case, its a panel discussion, create a view point of each speaker separately under the "Speaker viewpoint"
+2.If its a learning video, your output should be a summary to include a separate heading for "Key Learnings".
+Key Learnings: <Key learnings from the video>
 
-If its a movie video, try to create a summary with some kind of plot
+3.In case, its a panel discussion, your output should be a view point of each speaker separately under the "Speaker viewpoint".
+Summarize all viewpoints of a speaker under the speaker name
+Speaker Viewpoints:
 
-If its a fitness / exercise video, try to create a summary which includes headings for "Key exercises"  and the "Exercise benefits" as points.
+ Speaker Name : < summarize this speakers view points here>
+
+ Speaker Name : < summarize this speakers view points here>
+
+..
+
+4.If its a movie video, try to create a summary with some kind of plot
+
+5.If its a fitness / exercise video, your output should be a summary which includes headings for "Key exercises"  and the "Exercise benefits" as points.
+Key exercises: <key exercises>
+Benefits : <benefits>
+
+6. If its none of the above, create a summary give important points
 
 Transcript
 ```
