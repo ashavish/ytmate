@@ -1,2 +1,2 @@
 # ytmate
-Youtube Backend Helper AI
+Youtube Backend Helper AI using LLMs and RAG
